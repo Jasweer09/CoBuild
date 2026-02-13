@@ -1,0 +1,26 @@
+{
+  "name": "cobuild",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CoBuild - Enterprise B2B SaaS AI Chatbot Platform",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "check-types": "turbo check-types",
+    "test": "turbo test",
+    "test:e2e": "turbo test:e2e",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "db:generate": "pnpm --filter @cobuild/api prisma:generate",
+    "db:migrate": "pnpm --filter @cobuild/api prisma:migrate",
+    "db:push": "pnpm --filter @cobuild/api prisma:push",
+    "db:studio": "pnpm --filter @cobuild/api prisma:studio"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.4"
+}

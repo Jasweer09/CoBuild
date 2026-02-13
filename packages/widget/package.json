@@ -1,0 +1,19 @@
+{
+  "name": "@cobuild/widget",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Widget build placeholder'",
+    "check-types": "tsc --noEmit",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.7.0",
+    "rimraf": "^6.0.0"
+  }
+}

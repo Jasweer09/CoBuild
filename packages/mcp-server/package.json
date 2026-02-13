@@ -1,0 +1,14 @@
+{
+  "name": "@cobuild/mcp-server",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'MCP server build placeholder'",
+    "check-types": "tsc --noEmit",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "rimraf": "^6.0.0"
+  }
+}
