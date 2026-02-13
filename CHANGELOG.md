@@ -2,6 +2,20 @@
 
 All notable changes to the CoBuild platform will be documented in this file.
 
+## [0.2.0] - 2025-02-13
+
+### Added
+- Full authentication system: signup, login, logout with JWT + refresh tokens
+- Google OAuth integration via Passport.js with auto org creation
+- Email verification flow with 6-digit OTP (Redis-backed, 10min TTL)
+- Role-based access control (OWNER, ADMIN, MANAGER, AGENT, VIEWER)
+- Global JwtAuthGuard + RolesGuard registered as APP_GUARDs
+- @Public(), @Roles(), @CurrentUser() decorators
+- User module with profile endpoints (GET /user/me, PATCH /user/me, GET /user/team)
+- Tenant module with org management (GET /tenant, PATCH /tenant)
+- Frontend: working login, signup, email verification, Google OAuth callback pages
+- Frontend: API client (fetch wrapper), Zustand auth store with token management
+
 ## [0.1.0] - 2025-02-13
 
 ### Added
