@@ -15,6 +15,7 @@ import { ConversationModule } from './domains/conversation/conversation.module';
 import { AiModule } from './domains/ai/ai.module';
 import { KnowledgeModule } from './domains/knowledge/knowledge.module';
 import { BillingModule } from './domains/billing/billing.module';
+import { DeploymentModule } from './domains/deployment/deployment.module';
 
 @Module({
   imports: [
@@ -37,10 +38,11 @@ import { BillingModule } from './domains/billing/billing.module';
     KnowledgeModule,
     // Phase 4: Billing
     BillingModule,
+    // Phase 5: White-label & Deployment
+    DeploymentModule,
     // AnalyticsModule,
     // NotificationModule,
     // IntegrationModule,
-    // DeploymentModule,
     // CollaborationModule,
     // AdminModule,
     // CmsModule,

@@ -2,6 +2,20 @@
 
 All notable changes to the CoBuild platform will be documented in this file.
 
+## [0.6.0] - 2026-02-13
+
+### Added
+- White-label & Deployment module: org branding, custom domains, embeddable widget, email domains
+- Organization branding: primary/secondary colors, font family, custom CSS, logo URL
+- Custom domain management: add, CNAME verification, SSL status, delete
+- Embeddable widget configuration: theme, colors, position, allowed domains, password protection
+- Embed code generator with copy-to-clipboard and direct share link
+- Email domain management with DKIM token setup and verification
+- Widget config endpoint (@Public) for embedded widget to fetch appearance settings
+- Frontend: Settings page at /dashboard/settings with Branding, Custom Domains, Email Domains tabs
+- Frontend: Embed and Deployment tabs added to bot detail page
+- Frontend: Embeddable chat widget page at /embed/:chatbotId with password gate support
+
 ## [0.5.0] - 2026-02-13
 
 ### Added
