@@ -10,6 +10,9 @@ import { RolesGuard } from './core/common/guards/roles.guard';
 import { AuthModule } from './domains/auth/auth.module';
 import { UserModule } from './domains/user/user.module';
 import { TenantModule } from './domains/tenant/tenant.module';
+import { ChatbotModule } from './domains/chatbot/chatbot.module';
+import { ConversationModule } from './domains/conversation/conversation.module';
+import { AiModule } from './domains/ai/ai.module';
 
 @Module({
   imports: [
@@ -24,11 +27,12 @@ import { TenantModule } from './domains/tenant/tenant.module';
     AuthModule,
     UserModule,
     TenantModule,
+    // Phase 2: Chatbot Core
+    ChatbotModule,
+    ConversationModule,
+    AiModule,
     // Domain modules (uncomment as built)
-    // ChatbotModule,
-    // AiModule,
     // KnowledgeModule,
-    // ConversationModule,
     // BillingModule,
     // AnalyticsModule,
     // NotificationModule,

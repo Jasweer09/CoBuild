@@ -2,6 +2,18 @@
 
 All notable changes to the CoBuild platform will be documented in this file.
 
+## [0.3.0] - 2025-02-13
+
+### Added
+- Chatbot CRUD module: create, list, get, update, delete with org-scoped access
+- Conversation module: CRUD, message history, auto-titling, folder support, pinning
+- AI module with Vercel AI SDK: Gemini 2.5 Flash (primary), Claude 3.5 Haiku (backup)
+- SSE streaming chat endpoint (POST /api/ai/chat) with real-time token streaming
+- Per-chatbot rate limiting via Redis (configurable messages/window)
+- Frontend: chatbot list page with create/delete at /dashboard/bots
+- Frontend: chatbot detail page with General, AI Settings, and Rate Limit tabs
+- Frontend: real-time chat interface with SSE streaming, conversation sidebar, suggested messages
+
 ## [0.2.0] - 2025-02-13
 
 ### Added
