@@ -4,6 +4,7 @@ import {
   ForbiddenException,
 } from '@nestjs/common';
 import { PrismaService } from '../../core/database/prisma.service';
+import { Prisma } from '../../generated/prisma';
 import { CreateChatbotDto, UpdateChatbotDto } from './dto';
 
 @Injectable()
@@ -87,17 +88,21 @@ export class ChatbotService {
       throw new NotFoundException('Chatbot not found');
     }
 
+    const { appearance, ...rest } = dto;
+    const data: Prisma.ChatbotUpdateInput = {
+      ...rest,
+      ...(appearance && { appearance: appearance as Prisma.InputJsonValue }),
+      ...(dto.name && {
+        slug: dto.name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, ''),
+      }),
+    };
+
     return this.prisma.chatbot.update({
       where: { id },
-      data: {
-        ...dto,
-        ...(dto.name && {
-          slug: dto.name
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/(^-|-$)/g, ''),
-        }),
-      },
+      data,
     });
   }
 

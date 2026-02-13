@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../core/database/prisma.service';
+import { Prisma } from '../../generated/prisma';
 
 @Injectable()
 export class TenantService {
@@ -48,8 +49,14 @@ export class TenantService {
 
   async updateOrganization(
     orgId: string,
-    data: { name?: string; logoUrl?: string; branding?: Record<string, unknown> },
+    input: { name?: string; logoUrl?: string; branding?: Record<string, unknown> },
   ) {
+    const { branding, ...rest } = input;
+    const data: Prisma.OrganizationUpdateInput = {
+      ...rest,
+      ...(branding && { branding: branding as Prisma.InputJsonValue }),
+    };
+
     return this.prisma.organization.update({
       where: { id: orgId },
       data,

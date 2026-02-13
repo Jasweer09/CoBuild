@@ -277,10 +277,13 @@ export class AuthService {
       role: user.role,
     };
 
-    const accessToken = this.jwtService.sign(payload, {
-      secret: this.configService.get<string>('JWT_SECRET'),
-      expiresIn: this.configService.get<string>('JWT_EXPIRATION', '15m'),
-    });
+    const accessToken = this.jwtService.sign(
+      payload as unknown as Record<string, unknown>,
+      {
+        secret: this.configService.get<string>('JWT_SECRET')!,
+        expiresIn: this.configService.get<string>('JWT_EXPIRATION', '15m') as unknown as number,
+      },
+    );
 
     const refreshToken = randomBytes(40).toString('hex');
     const tokenHash = this.hashToken(refreshToken);
