@@ -56,6 +56,14 @@ class EnvironmentVariables {
   @IsString()
   @IsOptional()
   GOOGLE_CALLBACK_URL?: string;
+
+  @IsString()
+  @IsOptional()
+  STRIPE_SECRET_KEY?: string;
+
+  @IsString()
+  @IsOptional()
+  STRIPE_WEBHOOK_SECRET?: string;
 }
 
 export function configValidation(config: Record<string, unknown>) {

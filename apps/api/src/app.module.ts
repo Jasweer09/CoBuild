@@ -14,6 +14,7 @@ import { ChatbotModule } from './domains/chatbot/chatbot.module';
 import { ConversationModule } from './domains/conversation/conversation.module';
 import { AiModule } from './domains/ai/ai.module';
 import { KnowledgeModule } from './domains/knowledge/knowledge.module';
+import { BillingModule } from './domains/billing/billing.module';
 
 @Module({
   imports: [
@@ -34,7 +35,8 @@ import { KnowledgeModule } from './domains/knowledge/knowledge.module';
     AiModule,
     // Phase 3: Knowledge Base
     KnowledgeModule,
-    // BillingModule,
+    // Phase 4: Billing
+    BillingModule,
     // AnalyticsModule,
     // NotificationModule,
     // IntegrationModule,

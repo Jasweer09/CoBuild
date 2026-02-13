@@ -2,6 +2,19 @@
 
 All notable changes to the CoBuild platform will be documented in this file.
 
+## [0.5.0] - 2026-02-13
+
+### Added
+- Billing module: Stripe Checkout, Customer Portal, subscription lifecycle
+- Plan management: FREE, BASIC, PREMIUM, ENTERPRISE, ADD_ON tiers with Stripe price IDs
+- Subscription CRUD with auto-free-plan assignment for new organizations
+- Stripe webhook handler with idempotent event processing via StripeWebhookEvent table
+- Credit system: balance tracking, transaction history, deduction with insufficient balance checks
+- Feature usage tracking with per-org and per-chatbot limits, reset on billing cycle
+- Invoice management synced from Stripe webhook events
+- Frontend: Billing dashboard at /dashboard/billing with Subscription, Plans, Credits, Invoices tabs
+- Frontend: Public pricing page at /pricing with monthly/yearly toggle and feature comparison
+
 ## [0.4.0] - 2026-02-13
 
 ### Added
