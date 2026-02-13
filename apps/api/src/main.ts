@@ -55,6 +55,7 @@ async function bootstrap() {
   // Start
   const port = configService.get<number>('PORT', 5000);
   await app.listen(port);
+  // eslint-disable-next-line no-console
   console.log(`CoBuild API running on port ${port}`);
 }
 

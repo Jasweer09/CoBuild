@@ -2,7 +2,6 @@ import {
   Controller,
   Post,
   Body,
-  Param,
   Res,
   HttpCode,
   ForbiddenException,
@@ -131,7 +130,7 @@ export class AiController {
       );
 
       res.end();
-    } catch (error) {
+    } catch {
       res.write(
         `data: ${JSON.stringify({
           error: 'Failed to generate response',
