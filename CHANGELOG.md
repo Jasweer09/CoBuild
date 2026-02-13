@@ -2,6 +2,24 @@
 
 All notable changes to the CoBuild platform will be documented in this file.
 
+## [0.4.0] - 2026-02-13
+
+### Added
+- Knowledge Base module: web crawling, Q&A pairs, text training, embeddings
+- Web crawler using Cheerio with recursive link following, depth/limit controls
+- BullMQ workers: crawl-queue (async web crawling), training-queue (embedding generation)
+- Embedding service: OpenAI text-embedding-3-small, text chunking, pgvector storage
+- RAG pipeline: semantic search via cosine similarity, context-augmented system prompts
+- Citation extraction from RAG results returned in SSE completion events
+- Q&A pair CRUD with automatic embedding generation on create/update
+- Text training with upsert semantics (unique per chatbot)
+- Crawl page selection workflow: crawl → review pages → select → train
+- Frontend: Knowledge Base management page at /dashboard/bots/[id]/knowledge
+- Frontend: Web Sources tab (crawl jobs, expandable page list, page selection)
+- Frontend: Q&A Pairs tab (CRUD, search, bulk add, active toggle)
+- Frontend: Text Training tab (upsert, character count, delete confirmation)
+- Frontend: Files tab (placeholder for future file upload support)
+
 ## [0.3.0] - 2025-02-13
 
 ### Added

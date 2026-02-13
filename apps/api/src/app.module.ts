@@ -13,6 +13,7 @@ import { TenantModule } from './domains/tenant/tenant.module';
 import { ChatbotModule } from './domains/chatbot/chatbot.module';
 import { ConversationModule } from './domains/conversation/conversation.module';
 import { AiModule } from './domains/ai/ai.module';
+import { KnowledgeModule } from './domains/knowledge/knowledge.module';
 
 @Module({
   imports: [
@@ -31,8 +32,8 @@ import { AiModule } from './domains/ai/ai.module';
     ChatbotModule,
     ConversationModule,
     AiModule,
-    // Domain modules (uncomment as built)
-    // KnowledgeModule,
+    // Phase 3: Knowledge Base
+    KnowledgeModule,
     // BillingModule,
     // AnalyticsModule,
     // NotificationModule,

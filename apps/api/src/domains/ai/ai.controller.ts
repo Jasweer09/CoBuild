@@ -10,6 +10,7 @@ import { Response } from 'express';
 import { AiService } from './ai.service';
 import { ConversationService } from '../conversation/conversation.service';
 import { ChatbotService } from '../chatbot/chatbot.service';
+import { RagService } from '../knowledge/rag.service';
 import { CacheService } from '../../core/cache/cache.service';
 import { CurrentUser } from '../../core/common/decorators';
 import { MessageRole } from '../../generated/prisma';
@@ -27,6 +28,7 @@ export class AiController {
     private readonly aiService: AiService,
     private readonly conversationService: ConversationService,
     private readonly chatbotService: ChatbotService,
+    private readonly ragService: RagService,
     private readonly cacheService: CacheService,
   ) {}
 
@@ -86,6 +88,13 @@ export class AiController {
       content: m.content,
     }));
 
+    // RAG: retrieve relevant knowledge base context
+    const ragResult = await this.ragService.augment(
+      chatbot.id,
+      dto.content,
+      chatbot.systemPrompt,
+    );
+
     // Set up SSE headers
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
@@ -94,10 +103,10 @@ export class AiController {
     res.flushHeaders();
 
     try {
-      // Stream AI response
+      // Stream AI response with RAG-augmented prompt
       const result = await this.aiService.streamChat({
         modelName: chatbot.aiModel,
-        systemPrompt: chatbot.systemPrompt ?? undefined,
+        systemPrompt: ragResult.augmentedPrompt || undefined,
         messages: aiMessages,
         temperature: chatbot.temperature,
       });
@@ -120,12 +129,19 @@ export class AiController {
         usage?.totalTokens,
       );
 
-      // Send completion event
+      // Send completion event with citations from RAG
+      const citations = ragResult.contexts.map((ctx, i) => ({
+        index: i + 1,
+        content: ctx.content.substring(0, 200),
+        score: ctx.score,
+      }));
+
       res.write(
         `data: ${JSON.stringify({
           isComplete: true,
           conversationId,
           usage,
+          citations: citations.length > 0 ? citations : undefined,
         })}\n\n`,
       );
 

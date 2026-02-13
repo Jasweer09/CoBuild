@@ -32,6 +32,30 @@ class EnvironmentVariables {
   @IsString()
   @IsOptional()
   CORS_ORIGINS: string = 'http://localhost:3000';
+
+  @IsString()
+  @IsOptional()
+  GEMINI_API_KEY?: string;
+
+  @IsString()
+  @IsOptional()
+  ANTHROPIC_API_KEY?: string;
+
+  @IsString()
+  @IsOptional()
+  OPENAI_API_KEY?: string;
+
+  @IsString()
+  @IsOptional()
+  GOOGLE_CLIENT_ID?: string;
+
+  @IsString()
+  @IsOptional()
+  GOOGLE_CLIENT_SECRET?: string;
+
+  @IsString()
+  @IsOptional()
+  GOOGLE_CALLBACK_URL?: string;
 }
 
 export function configValidation(config: Record<string, unknown>) {
